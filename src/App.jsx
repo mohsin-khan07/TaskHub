@@ -1,7 +1,11 @@
+import AddTask from "./components/AddTask";
+import TasksList from "./components/TasksList";
+
 function App() {
   return (
-    <div className="m-2 flex flex-col justify-center bg-blue-50 p-2 font-bold text-black">
-      app
+    <div className="flex">
+      <AddTask />
+      <TasksList />
     </div>
   );
 }
