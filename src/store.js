@@ -15,7 +15,6 @@ const todosSlice = createSlice({
           payload: { title, description },
         };
       },
-
       reducer(state, action) {
         state.push({
           id: uuidv4(),
@@ -24,6 +23,13 @@ const todosSlice = createSlice({
           completed: false,
         });
       },
+    },
+
+    deleteTodo: (state, action) => {
+      const index = state.findIndex((e) => e.id === action.payload);
+      const newState = [...state];
+      newState.splice(index, 1);
+      return newState;
     },
     completeTodo: (state, action) => {
       const index = state.findIndex((e) => e.id === action.payload);
@@ -53,7 +59,7 @@ const filterSlice = createSlice({
   },
 });
 
-export const { addTodo, completeTodo } = todosSlice.actions;
+export const { addTodo, deleteTodo, completeTodo } = todosSlice.actions;
 export const { selectAll, selectDone, selectToDo } = filterSlice.actions;
 
 const store = configureStore({
