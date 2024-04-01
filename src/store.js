@@ -51,15 +51,30 @@ const todosSlice = createSlice({
   },
 });
 
+const filterSlice = createSlice({
+  name: "filter",
+  initialState: "all",
+  reducers: {
+    selectAll: () => {
+      return "all";
+    },
+    selectDone: () => {
+      return "done";
+    },
+    selectToDo: () => {
+      return "toDo";
+    },
+  },
+});
+
 export const { addTodo, completeTodo } = todosSlice.actions;
+export const { selectAll, selectDone, selectToDo } = filterSlice.actions;
 
 const store = configureStore({
   reducer: {
     todos: todosSlice.reducer,
+    filter: filterSlice.reducer,
   },
 });
 
 export default store;
-
-// Can still subscribe to the store
-store.subscribe(() => console.log(store.getState()));

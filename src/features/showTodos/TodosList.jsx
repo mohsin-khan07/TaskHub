@@ -3,10 +3,19 @@ import Todo from "./Todo";
 
 function TodosList() {
   const todos = useSelector((store) => store.todos);
+  const filter = useSelector((store) => store.filter);
+
+  let filteredTodos;
+
+  if (filter === "done")
+    filteredTodos = todos.filter((todo) => todo.completed === true);
+  else if (filter === "toDo")
+    filteredTodos = todos.filter((todo) => todo.completed === false);
+  else filteredTodos = todos;
 
   return (
     <section className="flex flex-col gap-2">
-      {todos.map((todo) => (
+      {filteredTodos.map((todo) => (
         <Todo
           key={todo.id}
           id={todo.id}
