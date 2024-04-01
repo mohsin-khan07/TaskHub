@@ -1,18 +1,11 @@
-import { useSelector } from "react-redux";
 import Todos from "./features/showTodos/Todos";
 import AddTodo from "./features/addTodos/AddTodo";
 
 function App() {
-  const todos = useSelector((store) => store.todos);
-
-  const storeToLs = () => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  };
-
   return (
     <div className="flex flex-col sm:flex-row">
-      <AddTodo storeToLs={storeToLs} />
-      <Todos storeToLs={storeToLs} />
+      <AddTodo />
+      <Todos />
     </div>
   );
 }
