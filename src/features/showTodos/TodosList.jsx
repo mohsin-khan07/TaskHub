@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import Todo from "./Todo";
 
-function TodosList() {
+function TodosList({ storeToLs }) {
   const todos = useSelector((store) => store.todos);
   const filter = useSelector((store) => store.filter);
 
@@ -22,6 +22,7 @@ function TodosList() {
           title={todo.title}
           description={todo.description}
           completed={todo.completed}
+          storeToLs={storeToLs}
         />
       ))}
     </section>

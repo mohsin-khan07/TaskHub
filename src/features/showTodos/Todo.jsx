@@ -1,10 +1,10 @@
 import { useDispatch } from "react-redux";
 import { completeTodo } from "../../store";
 
-function Todo({ id, title, description, completed }) {
+function Todo({ id, title, description, completed, storeToLs }) {
   return (
     <section className="flex items-center gap-3.5 rounded border border-secondary p-4">
-      <Checkbox id={id} completed={completed} />
+      <Checkbox id={id} completed={completed} storeToLs={storeToLs} />
       <div className="flex flex-col gap-1 text-grey2">
         <p className={`${completed ? "text-grey3 line-through" : ""}`}>
           {title}
@@ -15,16 +15,19 @@ function Todo({ id, title, description, completed }) {
   );
 }
 
-function Checkbox({ id, completed }) {
+function Checkbox({ id, completed, storeToLs }) {
   const dispatch = useDispatch();
 
   const handleCheckbox = (id) => {
     dispatch(completeTodo(id));
+    storeToLs();
   };
 
   return (
     <div
-      onClick={() => handleCheckbox(id)}
+      onClick={() => {
+        handleCheckbox(id);
+      }}
       className={`flex h-5 w-5 items-center justify-center rounded border ${completed ? "bg-primary" : "border-secondary"}`}
     >
       <img src="checkIcon.svg" className="w-2.5" alt="checkbox"></img>

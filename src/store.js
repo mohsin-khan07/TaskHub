@@ -3,26 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const todos = localStorage.getItem("todos")
   ? JSON.parse(localStorage.getItem("todos"))
-  : [
-      {
-        id: 1,
-        title: "Complete project proposal for upcoming client meeting",
-        description: "check",
-        completed: false,
-      },
-      {
-        id: 2,
-        title: "Review and respond to emails in inbox.",
-        description: "",
-        completed: false,
-      },
-      {
-        id: 3,
-        title: "Make Presentation for tomorrow",
-        description: "",
-        completed: true,
-      },
-    ];
+  : [];
 
 const todosSlice = createSlice({
   name: "todos",
@@ -45,8 +26,13 @@ const todosSlice = createSlice({
       },
     },
     completeTodo: (state, action) => {
-      const selectedTodo = state.find((e) => e.id === action.payload);
-      selectedTodo.completed = !selectedTodo.completed;
+      const index = state.findIndex((e) => e.id === action.payload);
+      const newState = [...state];
+      newState[index] = {
+        ...newState[index],
+        completed: !newState[index].completed,
+      };
+      return newState;
     },
   },
 });
@@ -78,3 +64,5 @@ const store = configureStore({
 });
 
 export default store;
+
+console.log(store.getState().todos);

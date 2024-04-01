@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../../store";
 
-function TodoInput() {
+function TodoInput({ storeToLs }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -37,6 +37,7 @@ function TodoInput() {
       <button
         onClick={() => {
           handleAddTodo(title, description);
+          storeToLs();
           setTitle("");
           setDescription("");
         }}
