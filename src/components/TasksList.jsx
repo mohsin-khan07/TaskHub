@@ -1,7 +1,7 @@
 function TasksList() {
   return (
     <section className="w-2/3 px-10 pt-28">
-      <h1 className="text-primary mb-6 text-3xl font-medium leading-[48px]">
+      <h1 className="mb-6 text-3xl font-medium leading-[48px] text-primary">
         To do tasks
       </h1>
       <Filters />
@@ -12,19 +12,19 @@ function TasksList() {
 
 function Filters() {
   const filtersStyle =
-    "border-primary text-primary flex w-24 cursor-pointer items-center justify-center rounded-lg border py-2 text-sm font-medium";
+    "border-primary text-primary flex w-24 items-center justify-center rounded-lg border py-2 text-sm font-medium";
 
   return (
     <section className="mb-10 flex gap-4">
-      <div className={filtersStyle}>
+      <button className={filtersStyle}>
         <p>All</p>
-      </div>
-      <div className={filtersStyle}>
+      </button>
+      <button className={filtersStyle}>
         <p>Done</p>
-      </div>
-      <div className={filtersStyle}>
+      </button>
+      <button className={filtersStyle}>
         <p>To Do</p>
-      </div>
+      </button>
     </section>
   );
 }
@@ -42,12 +42,22 @@ function List() {
 
 function Task({ task, isCompleted }) {
   return (
-    <section className="border-secondary flex gap-3.5 rounded border p-4">
-      <input type="checkbox" name="checkbox" id="checkbox" className="w-5" />
+    <section className="flex items-center gap-3.5 rounded border border-secondary p-4 text-grey2">
+      <Checkbox active={isCompleted} />
       <p className={`${isCompleted ? "text-grey3 line-through" : ""}`}>
         {task}
       </p>
     </section>
+  );
+}
+
+function Checkbox({ active }) {
+  return (
+    <div
+      className={`flex h-5 w-5 items-center justify-center rounded border ${active ? "bg-primary" : "border-secondary"}`}
+    >
+      <img src="checkIcon.svg" className="w-2.5" alt="checkbox"></img>
+    </div>
   );
 }
 
