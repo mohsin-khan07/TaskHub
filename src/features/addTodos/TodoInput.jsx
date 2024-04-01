@@ -1,19 +1,16 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../../store";
 
-function AddTask({ handleAddTask }) {
-  return (
-    <section className="h-screen w-1/3 bg-background px-12 py-28">
-      <h1 className="mb-6 text-3xl font-medium leading-[48px] text-primary">
-        Add Task
-      </h1>
-      <TaskInput handleAddTask={handleAddTask} />
-    </section>
-  );
-}
-
-function TaskInput({ handleAddTask }) {
+function TodoInput() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+
+  const dispatch = useDispatch();
+
+  const handleAddTodo = (title, description) => {
+    dispatch(addTodo(title, description));
+  };
 
   return (
     <div className="flex flex-col gap-6">
@@ -39,16 +36,16 @@ function TaskInput({ handleAddTask }) {
       </div>
       <button
         onClick={() => {
-          handleAddTask(title, description);
+          handleAddTodo(title, description);
           setTitle("");
           setDescription("");
         }}
         className="mt-16 w-full rounded bg-primary py-3 text-sm font-semibold text-[#fff]"
       >
-        Add Task
+        Add Todo
       </button>
     </div>
   );
 }
 
-export default AddTask;
+export default TodoInput;

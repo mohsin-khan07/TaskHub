@@ -1,11 +1,11 @@
-import AddTask from "./components/AddTask";
-import TasksList from "./components/TasksList";
+import Todos from "./features/showTodos/Todos";
+import AddTodo from "./features/addTodos/AddTodo";
 
 function App() {
   return (
     <div className="flex">
-      <AddTask />
-      <TasksList />
+      <AddTodo />
+      <Todos />
     </div>
   );
 }

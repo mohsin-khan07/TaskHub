@@ -1,11 +1,14 @@
-function TasksList() {
+import { useSelector } from "react-redux";
+
+function Todos({ tasks, handleCheckbox }) {
+  const store = useSelector((store) => store);
   return (
     <section className="w-2/3 px-10 pt-28">
       <h1 className="mb-6 text-3xl font-medium leading-[48px] text-primary">
         To do tasks
       </h1>
       <Filters />
-      <List />
+      <List tasks={tasks} handleCheckbox={handleCheckbox} />
     </section>
   );
 }
@@ -29,31 +32,37 @@ function Filters() {
   );
 }
 
-function List() {
+function List({ tasks, handleCheckbox }) {
   return (
     <section className="flex flex-col gap-2">
-      <Task task="Complete project proposal for upcoming client meeting" />
-      <Task task="Review and respond to emails in inbox." />
-      <Task task="Schedule meeting with team members to discuss project timeline." />
-      <Task task="Make Presentation for tomorrow" isCompleted={true} />
+      {tasks.map((task) => (
+        <Task
+          key={task.id}
+          id={task.id}
+          taskTitle={task.title}
+          isCompleted={task.isCompleted}
+          handleCheckbox={handleCheckbox}
+        />
+      ))}
     </section>
   );
 }
 
-function Task({ task, isCompleted }) {
+function Task({ id, taskTitle, isCompleted, handleCheckbox }) {
   return (
     <section className="flex items-center gap-3.5 rounded border border-secondary p-4 text-grey2">
-      <Checkbox active={isCompleted} />
+      <Checkbox id={id} active={isCompleted} handleCheckbox={handleCheckbox} />
       <p className={`${isCompleted ? "text-grey3 line-through" : ""}`}>
-        {task}
+        {taskTitle}
       </p>
     </section>
   );
 }
 
-function Checkbox({ active }) {
+function Checkbox({ id, active, handleCheckbox }) {
   return (
     <div
+      onClick={() => handleCheckbox(id)}
       className={`flex h-5 w-5 items-center justify-center rounded border ${active ? "bg-primary" : "border-secondary"}`}
     >
       <img src="checkIcon.svg" className="w-2.5" alt="checkbox"></img>
@@ -61,4 +70,4 @@ function Checkbox({ active }) {
   );
 }
 
-export default TasksList;
+export default Todos;
