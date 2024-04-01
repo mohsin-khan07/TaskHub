@@ -6,7 +6,7 @@ function Filters() {
   const [activeFilter, setActiveFilter] = useState(0);
 
   return (
-    <section className="mb-10 flex gap-4">
+    <section className="mb-5 flex flex-wrap gap-2 sm:mb-10 sm:gap-4">
       <Filter
         num={0}
         activeFilter={activeFilter}

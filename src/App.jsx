@@ -10,7 +10,7 @@ function App() {
   };
 
   return (
-    <div className="flex">
+    <div className="flex flex-col sm:flex-row">
       <AddTodo storeToLs={storeToLs} />
       <Todos storeToLs={storeToLs} />
     </div>

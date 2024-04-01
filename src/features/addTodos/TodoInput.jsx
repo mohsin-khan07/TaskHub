@@ -13,7 +13,7 @@ function TodoInput({ storeToLs }) {
   };
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-3 sm:gap-6">
       <div className="flex flex-col gap-2">
         <p className="leading-6">Task Title</p>
         <input
@@ -41,7 +41,7 @@ function TodoInput({ storeToLs }) {
           setTitle("");
           setDescription("");
         }}
-        className="mt-16 w-full rounded bg-primary py-3 text-sm font-semibold text-[#fff]"
+        className="w-full rounded bg-primary py-3 text-sm font-semibold text-[#fff] lg:mt-16"
       >
         Add Todo
       </button>
