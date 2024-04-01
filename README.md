@@ -1,8 +1,8 @@
-# React + Vite
+# Task Hub - A Todo List Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h2>Tech Stack</h2>
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [React](https://react.dev) - Front-end logic
+- [Redux](https://redux.js.org) - State Management
+- [Tailwind CSS](https://tailwindcss.com) - Styling and UI
+- [Vercel](https://vercel.com) - Hosting & Deployment
